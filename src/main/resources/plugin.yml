@@ -1,0 +1,17 @@
+name: GunGame
+version: '${project.version}'
+main: me.commandrod.gungame.Main
+api-version: 1.16
+authors: [ commandROD ]
+description: Reaction of the GunGame gamemode on the TopStrix Network.
+website: https://github.com/commandrod
+commands:
+  setspawn:
+    description: Sets the spawn location.
+    usage: /setspawn
+  spawn:
+    description: Teleports the player to spawn.
+    usage: /spawn [player]
+  setlevel:
+    description: Sets a player's level.
+    usage: /setlevel <level> [player]
