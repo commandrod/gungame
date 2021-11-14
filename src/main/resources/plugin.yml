@@ -15,3 +15,6 @@ commands:
   setlevel:
     description: Sets a player's level.
     usage: /setlevel <level> [player]
+  profile:
+    description: Opens the profile GUI.
+    usage: /profile

@@ -12,4 +12,8 @@ public class SoundUtils {
             players.playSound(players.getLocation(), sound, SoundCategory.MASTER, 1, 1);
         }
     }
+
+    public static void playSound(Player player, Sound sound) {
+        player.playSound(player.getLocation(), sound, SoundCategory.MASTER, 1, 1);
+    }
 }

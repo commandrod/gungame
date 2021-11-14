@@ -3,11 +3,15 @@ package me.commandrod.gungame.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class ScoreboardUtils {
+public class StatUtils {
+
+    private static JavaPlugin plugin;
+    public StatUtils(JavaPlugin plugin) { StatUtils.plugin = plugin; }
 
     public static final HashMap<UUID, Integer> killstreakMap = new HashMap<>();
     public static final HashMap<Integer, String> milestones = new HashMap<>();
@@ -36,7 +40,7 @@ public class ScoreboardUtils {
         if (killNumber >= 100){
             SoundUtils.playSoundForAll(Sound.ENTITY_ENDER_DRAGON_GROWL);
         }
-        Bukkit.broadcastMessage(Utils.color(milestones.get(killNumber).replace("{}", player.getName())));
+        Bukkit.broadcastMessage(Utils.color("&f\n" + milestones.get(killNumber).replace("{}", player.getName()) + "\n&f "));
     }
 
     public static void resetKills(Player player){
@@ -45,5 +49,13 @@ public class ScoreboardUtils {
         } else {
             killstreakMap.replace(player.getUniqueId(), 0);
         }
+    }
+
+    public static int getKills(Player player) {
+        return plugin.getConfig().getInt("settings." + player.getUniqueId() + ".kills");
+    }
+
+    public static int getDeaths(Player player) {
+        return plugin.getConfig().getInt("settings." + player.getUniqueId() + ".deaths");
     }
 }
