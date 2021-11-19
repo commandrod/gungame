@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GunGame:jar">
+    <output-path>F:/MC Test servers/GunGame18/plugins</output-path>
+    <root id="archive" name="GunGame.jar">
+      <element id="module-output" name="GunGame" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.22" />
+    </root>
+  </artifact>
+</component>
