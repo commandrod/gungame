@@ -1,6 +1,7 @@
 package me.commandrod.gungame.listeners;
 
 import me.commandrod.gungame.commands.Profile;
+import me.commandrod.gungame.gui.Shop;
 import me.commandrod.gungame.levels.LevelManager;
 import me.commandrod.gungame.scoreboard.GunGameSB;
 import me.commandrod.gungame.utils.ConfigUtils;
@@ -13,6 +14,7 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -112,7 +114,7 @@ public class Events implements Listener {
         if (LevelManager.getPlayerLevel(killer).getLevel() >= 48){
             killer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 0, false, false));
         } else {
-            killer.setHealth(20);
+            if (!killer.isDead()) killer.setHealth(20);
         }
         plugin.getConfig().set("settings." + killer.getUniqueId() + ".kills", plugin.getConfig().getInt("settings." + killer.getUniqueId() + ".kills") + 1);
         plugin.saveConfig();
@@ -141,6 +143,13 @@ public class Events implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent e) {
+        if (e.getClickedInventory() != null && e.getClickedInventory().equals(Profile.getProfileGUI()) || e.getClickedInventory().equals(Shop.getGUI())){
+            e.setCancelled(true);
+            e.setResult(Event.Result.DENY);
+            if (e.getCurrentItem() == null) return;
+            if (e.getCurrentItem().getType().equals(Material.GOLD_INGOT)) e.getWhoClicked().openInventory(Shop.getGUI());
+            return;
+        }
         if (e.getWhoClicked() instanceof Player && e.getClickedInventory() != null) {
             Player p = (Player) e.getWhoClicked();
             if (!(p.getGameMode().equals(GameMode.SURVIVAL) || p.getGameMode().equals(GameMode.ADVENTURE))) return;

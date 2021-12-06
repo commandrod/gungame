@@ -1,10 +1,7 @@
 package me.commandrod.gungame;
 
 import lombok.Getter;
-import me.commandrod.gungame.commands.Profile;
-import me.commandrod.gungame.commands.SetLevel;
-import me.commandrod.gungame.commands.SetSpawn;
-import me.commandrod.gungame.commands.Spawn;
+import me.commandrod.gungame.commands.*;
 import me.commandrod.gungame.levels.RegisterLevels;
 import me.commandrod.gungame.listeners.Events;
 import me.commandrod.gungame.scoreboard.GunGameSB;
@@ -39,6 +36,7 @@ public final class Main extends JavaPlugin {
         getCommand("spawn").setExecutor(new Spawn());
         getCommand("setlevel").setExecutor(new SetLevel());
         getCommand("profile").setExecutor(new Profile(this));
+        getCommand("admin").setExecutor(new Admin(this));
         this.saveDefaultConfig();
         Bukkit.getPluginManager().registerEvents(new Events(this), this);
         RegisterLevels.iWantToUnaliveThisTookSoLongAHGDAGSD();

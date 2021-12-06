@@ -18,12 +18,12 @@ public class StatUtils {
     public static final HashMap<Integer, String> milestones = new HashMap<>();
 
     public static void setupMilestones(){
-        milestones.put(10, "&b" + "השחקן {} הגיע ל10 הריגות ברצף!");
-        milestones.put(25, "&c" + "השחקן {} הגיע ל25 הריגות ברצף!");
-        milestones.put(50, "&c" + "השחקן {} הגיע ל50 הריגות ברצף!");
-        milestones.put(100, "&c&l" + "השחקן {} הגיע ל100 הריגות ברצף!");
-        milestones.put(250, "&c&l" + "השחקן {} הגיע ל250 הריגות ברצף!");
-        milestones.put(500, "&c&l" + "השחקן {} הגיע ל500 הריגות ברצף!");
+        milestones.put(10, "&b" + "The player {} reached a killstreak of 10!");
+        milestones.put(25, "&c" + "The player {} reached a killstreak of 25!");
+        milestones.put(50, "&c" + "The player {} reached a killstreak of 50!");
+        milestones.put(100, "&c&l" + "The player {} reached a killstreak of 100!");
+        milestones.put(250, "&c&l" + "The player {} reached a killstreak of 250!");
+        milestones.put(500, "&c&l" + "The player {} reached a killstreak of 500!");
     }
 
     public static int getKillStreak(Player player) {

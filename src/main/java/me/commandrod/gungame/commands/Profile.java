@@ -1,19 +1,14 @@
 package me.commandrod.gungame.commands;
 
-import me.commandrod.gungame.utils.MessageUtils;
-import me.commandrod.gungame.utils.SoundUtils;
-import me.commandrod.gungame.utils.StatUtils;
-import me.commandrod.gungame.utils.Utils;
+import lombok.Getter;
+import me.commandrod.gungame.utils.*;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,14 +19,6 @@ public class Profile implements CommandExecutor {
     private JavaPlugin plugin;
     public Profile(JavaPlugin plugin){
         this.plugin = plugin;
-    }
-
-    private ItemStack backgroundItem(){
-        ItemStack is = new ItemStack(Material.STAINED_GLASS_PANE, 1, DyeColor.BLACK.getData());
-        ItemMeta im = is.getItemMeta();
-        im.setDisplayName(" ");
-        is.setItemMeta(im);
-        return is;
     }
 
     private ItemStack head(Player player){
@@ -55,25 +42,15 @@ public class Profile implements CommandExecutor {
         return is;
     }
 
-    private ItemStack quickItem(String displayName, Material material, boolean enchanted){
-        ItemStack is = new ItemStack(material);
-        ItemMeta im = is.getItemMeta();
-        im.setDisplayName(Utils.color(displayName));
-        if (enchanted) im.addEnchant(Enchantment.ARROW_INFINITE, 1, false);
-        im.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-        is.setItemMeta(im);
-        return is;
-    }
+    @Getter
+    private static Inventory profileGUI;
 
     private void openGUI(Player player){
-        Inventory profileGUI = Bukkit.createInventory(null, 9*5, Utils.color("&bYour Profile"));
+        profileGUI = Bukkit.createInventory(null, 9*5, Utils.color("&bYour Profile"));
         ItemStack head = head(player);
-        profileGUI.setItem(21, quickItem("&6Shop", Material.GOLD_INGOT, false));
+        profileGUI.setItem(21, InventoryUtils.quickItem("&6Shop", Material.GOLD_INGOT, false));
         profileGUI.setItem(23, head);
-        for (int i = 0; i < profileGUI.getSize(); i++){
-            if (profileGUI.getItem(i) != null) continue;
-            profileGUI.setItem(i, backgroundItem());
-        }
+        InventoryUtils.background(profileGUI);
         player.openInventory(profileGUI);
         SoundUtils.playSound(player, Sound.NOTE_PLING);
     }

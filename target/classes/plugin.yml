@@ -16,3 +16,6 @@ commands:
   profile:
     description: Opens the profile GUI.
     usage: /profile
+  admin:
+    description: Do the gaming stuff.
+    usage: /admin <reloadconfig>
