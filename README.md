@@ -4,9 +4,9 @@
 
 ## Intents
 
->This plugin was made only for the purpose of making a Gun Game recreation with modified PvP, the old maps & more features that have been removed in the latest updates, that the community would love to have back.
->
-Also, there is a version of the plugin made for 1.8 Minecraft Servers, to feel the true PvP experience.
+>This plugin was made only for the purpose of making a Gun Game recreation with modified PvP, the old maps & more features that have been removed in the latest updates, that the community would love to have back. Also, there is a version of the plugin made for 1.8 Minecraft Servers, to feel the true PvP experience.
+
+>⚠ WARNING ⚠: I recommend checking out the 1.8 branch, this branch is outdated and for 1.17 servers.
 
 ## Installation
 
